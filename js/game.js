@@ -9,7 +9,10 @@ class Game {
   constructor() {
     this.setupDragons();
     this.setupRemoveButtonElement();
-    this.clock = new Clock();
+    this.clock = new Clock(() => {
+      this.dragonsListElement.classList.add("game-over");
+      this.removeButtonElement.setAttribute("disabled", "true");
+    });
     this.clock.start();
   }
 
@@ -62,6 +65,12 @@ class Game {
     }
   }
 
+  allGreenDragonsIsInvisible() {
+    return this.dragons
+      .filter((dragon) => dragon.type === "green")
+      .every((dragon) => !dragon.visible);
+  }
+
   removeDragons() {
     for (const dragon of this.dragons) {
       if (dragon.visible && dragon.selected) {
@@ -71,6 +80,11 @@ class Game {
     this.clock.reset();
     this.quantityOfSelectedDragons = 0;
     this.changeStateRemoveButton();
+
+    if (this.allGreenDragonsIsInvisible()) {
+      this.clock.clear();
+      alert("Jogo acabou");
+    }
   }
 }
 

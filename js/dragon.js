@@ -21,6 +21,6 @@ export class Dragon {
 
   remove() {
     this.visible = false;
-    this.element.style.opacity = 0;
+    this.element.classList.add("invisible");
   }
 }

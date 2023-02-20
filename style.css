@@ -22,12 +22,16 @@ body{
     list-style: none;
 }
 
-.dragons li:not(:last-of-type) {
+.dragons .dragon[type="green"] {
     cursor: pointer;
 }
 
-.dragons li:not(:last-of-type):hover{
+.dragons .dragon[type="green"]:hover{
     background-color: #007e1369;
+}
+
+.dragons .dragon.invisible {
+    visibility: hidden;
 }
 
 img {

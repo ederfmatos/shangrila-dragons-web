@@ -11,32 +11,15 @@ class Game {
   }
 
   setupDragons() {
-    for (let index = 0; index < 14; index++) {
-      const element = this.createListItemElement(index, "green");
-      this.dragons.push(new Dragon("green", element));
+    const elements = this.dragonsListElement.querySelectorAll(".dragon");
+
+    for (const element of elements) {
+      const type = element.getAttribute("type");
+      if (type === "green") {
+        element.addEventListener("click", this.dragonClicked.bind(this));
+      }
+      this.dragons.push(new Dragon(type, element));
     }
-
-    const element = this.createListItemElement(14, "red");
-    this.dragons.push(new Dragon("red", element));
-  }
-
-  createListItemElement(index, type) {
-    const element = document.createElement("li");
-    element.setAttribute("index", index);
-
-    const imageElement = document.createElement("img");
-
-    if (type === "green") {
-      imageElement.src = "./img/green-dragon.png";
-    } else {
-      imageElement.src = "./img/red-dragon.png";
-    }
-
-    imageElement.addEventListener("click", this.dragonClicked.bind(this));
-
-    element.appendChild(imageElement);
-    this.dragonsListElement.appendChild(element);
-    return imageElement;
   }
 
   setupRemoveButtonElement() {
@@ -51,7 +34,7 @@ class Game {
     event.preventDefault();
     event.stopPropagation();
 
-    const dragonIndex = event.target.parentNode.getAttribute("index");
+    const dragonIndex = event.target.getAttribute("index");
     if (!dragonIndex) return;
 
     const dragon = this.dragons[dragonIndex];

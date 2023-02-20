@@ -60,8 +60,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-.tempo{
-    background-color: rgb(86, 218, 108);
+.clock{
     font-size: 30pt;
     margin-bottom: 16px;
     border-radius: 6px;

@@ -1,4 +1,5 @@
 import { Dragon } from "./dragon.js";
+import { Clock } from "./clock.js";
 
 class Game {
   dragons = [];
@@ -8,6 +9,8 @@ class Game {
   constructor() {
     this.setupDragons();
     this.setupRemoveButtonElement();
+    this.clock = new Clock();
+    this.clock.start();
   }
 
   setupDragons() {
@@ -65,7 +68,7 @@ class Game {
         dragon.remove();
       }
     }
-
+    this.clock.reset();
     this.quantityOfSelectedDragons = 0;
     this.changeStateRemoveButton();
   }

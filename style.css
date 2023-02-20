@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: #efefef;
+    background-color: rgb(86, 218, 108);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ button:hover{
 }
 
 button:disabled {
-    background-color: #39393925;
+    background-color: #5f5f5f;
     cursor: not-allowed;
 }
 

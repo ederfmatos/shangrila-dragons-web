@@ -55,6 +55,7 @@ class Game {
     if (!dragonIndex) return;
 
     const dragon = this.dragons[dragonIndex];
+    if (!dragon.visible) return;
 
     if (this.quantityOfSelectedDragons >= 3 && !dragon.selected) {
       alert("É permitido selecionar apenas 3 dragões por rodada.");
